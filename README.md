@@ -38,13 +38,13 @@ Built as the final project for the SoftUni Data Warehousing & ETL course.
 │                    └──► S3 Quarantine (rejected rows, date-stamped)         │
 └────────────────────────────────────┬────────────────────────────────────────┘
                                      │
-                         ┌───────────▼───────────┐
+                         ┌───────────▼────────────┐
                          │  S3 Processed Zone     │
                          │  sales_data.parquet    │
                          │  product_data.parquet  │
                          └───────────┬────────────┘
                                      │
-                         ┌───────────▼───────────┐
+                         ┌───────────▼────────────┐
                          │  S3 Guard Check        │
                          │  (Airflow task)        │
                          │  assert rows > 0       │
@@ -55,7 +55,7 @@ Built as the final project for the SoftUni Data Warehousing & ETL course.
 │                                                                             │
 │  CLEANSED layer          STAR layer               PRESENTATION layer        │
 │  ─────────────           ──────────               ──────────────────        │
-│  SALES_CLEAN    ──────►  DIM_DATE        ──────►  MV_SALES_BY_REGION_MONTH │
+│  SALES_CLEAN    ──────►  DIM_DATE        ──────►  MV_SALES_BY_REGION_MONTH  │
 │  PRODUCTS_CLEAN          DIM_PRODUCT              MV_TOP_PRODUCTS_BY_REVENUE│
 │                          FACT_SALES               MV_REVENUE_TREND          │
 │                          (denormalized)            MV_CATEGORY_PERFORMANCE  │
