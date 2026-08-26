@@ -1,0 +1,13 @@
+s3:
+  bucket: vlado-data-warehouse-course
+  raw_prefix: exam/raw
+  processed_prefix: exam/processed
+
+snowflake:
+  warehouse: COMPUTE_WH
+  database: EXAM_PROJECT
+  role: ACCOUNTADMIN
+
+pipeline:
+  sales_file: sales_data.csv
+  products_file: product_data.json
