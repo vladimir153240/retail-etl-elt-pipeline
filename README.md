@@ -3,6 +3,23 @@
 A production-style data pipeline that extracts retail sales and product data from AWS S3, validates and transforms it in Python, and loads it into a Snowflake star schema with materialized analytical views. Orchestrated end-to-end with Apache Airflow.
 
 ---
+## What this project demonstrates
+
+- **Hybrid ETL/ELT architecture** — transformation in Python (cheap, in-memory) and
+  loading plus dimensional modelling in Snowflake, rather than paying warehouse
+  compute to clean data.
+- **Data contracts** — Pandera schemas at both boundaries: input validation filters
+  bad rows to a date-stamped S3 quarantine zone for audit; output validation raises,
+  because a failure there means a transform bug, not bad source data.
+- **Dimensional modelling** — a star schema with a conformed date dimension and a
+  deliberately denormalized fact table, plus four materialized views in a
+  presentation layer.
+- **Orchestration with a failure guard** — a five-task Airflow DAG containing an
+  explicit check that blocks the ELT phase if the ETL produced empty output, so a
+  silent upstream failure cannot truncate the warehouse tables.
+
+Built as the final project for the SoftUni Data Warehousing & ETL course.
+
 
 ## Architecture
 
